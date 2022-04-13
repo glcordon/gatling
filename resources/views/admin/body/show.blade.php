@@ -27,6 +27,14 @@
                         </tr>
                         <tr>
                             <th>
+                                {{ trans('cruds.body.fields.service_id_number') }}
+                            </th>
+                            <td>
+                                {{ $body->service_id_number }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 {{ trans('cruds.body.fields.first_name') }}
                             </th>
                             <td>
@@ -51,18 +59,10 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.body.fields.death_date') }}
+                                {{ trans('cruds.body.fields.death_time_date') }}
                             </th>
                             <td>
-                                {{ $body->death_date }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.body.fields.ssn') }}
-                            </th>
-                            <td>
-                                {{ $body->ssn }}
+                                {{ $body->death_time_date }}
                             </td>
                         </tr>
                         <tr>
@@ -87,14 +87,6 @@
                             </th>
                             <td>
                                 {{ $body->place_of_removal }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.body.fields.time_of_death') }}
-                            </th>
-                            <td>
-                                {{ $body->time_of_death }}
                             </td>
                         </tr>
                         <tr>
@@ -131,10 +123,26 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.body.fields.stair_location') }}
+                                {{ trans('cruds.body.fields.stair_inside') }}
                             </th>
                             <td>
-                                {{ $body->stair_location_label }}
+                                <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $body->stair_inside ? 'checked' : '' }}>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.body.fields.stairs_outside') }}
+                            </th>
+                            <td>
+                                <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $body->stairs_outside ? 'checked' : '' }}>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.body.fields.number_of_stairs') }}
+                            </th>
+                            <td>
+                                {{ $body->number_of_stairs }}
                             </td>
                         </tr>
                         <tr>

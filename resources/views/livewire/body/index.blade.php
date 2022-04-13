@@ -57,136 +57,16 @@
                             @include('components.table.sort', ['field' => 'date_of_birth'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.death_date') }}
-                            @include('components.table.sort', ['field' => 'death_date'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.ssn') }}
-                            @include('components.table.sort', ['field' => 'ssn'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.height') }}
-                            @include('components.table.sort', ['field' => 'height'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.weight') }}
-                            @include('components.table.sort', ['field' => 'weight'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.place_of_removal') }}
-                            @include('components.table.sort', ['field' => 'place_of_removal'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.time_of_death') }}
-                            @include('components.table.sort', ['field' => 'time_of_death'])
+                            {{ trans('cruds.body.fields.death_time_date') }}
+                            @include('components.table.sort', ['field' => 'death_time_date'])
                         </th>
                         <th>
                             {{ trans('cruds.body.fields.covid') }}
                             @include('components.table.sort', ['field' => 'covid'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.me_case_number') }}
-                            @include('components.table.sort', ['field' => 'me_case_number'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.house_removal') }}
-                            @include('components.table.sort', ['field' => 'house_removal'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.rd_number') }}
-                            @include('components.table.sort', ['field' => 'rd_number'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.stair_location') }}
-                            @include('components.table.sort', ['field' => 'stair_location'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.family_ready_for_removal') }}
-                            @include('components.table.sort', ['field' => 'family_ready_for_removal'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.doctors_name') }}
-                            @include('components.table.sort', ['field' => 'doctors_name'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.doctors_phone_number') }}
-                            @include('components.table.sort', ['field' => 'doctors_phone_number'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.doctors_fax') }}
-                            @include('components.table.sort', ['field' => 'doctors_fax'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.at_need_service_id_number') }}
-                            @include('components.table.sort', ['field' => 'at_need_service_id_number'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.pre_need_number') }}
-                            @include('components.table.sort', ['field' => 'pre_need_number'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.next_of_kin') }}
-                            @include('components.table.sort', ['field' => 'next_of_kin'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.relationship') }}
-                            @include('components.table.sort', ['field' => 'relationship'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.next_of_kin_address') }}
-                            @include('components.table.sort', ['field' => 'next_of_kin_address'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.next_of_kin_phone') }}
-                            @include('components.table.sort', ['field' => 'next_of_kin_phone'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.next_of_kin_email') }}
-                            @include('components.table.sort', ['field' => 'next_of_kin_email'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.called_in_by') }}
-                            @include('components.table.sort', ['field' => 'called_in_by'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.called_in_by_relationship') }}
-                            @include('components.table.sort', ['field' => 'called_in_by_relationship'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.called_in_by_phone') }}
-                            @include('components.table.sort', ['field' => 'called_in_by_phone'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.embalm') }}
-                            @include('components.table.sort', ['field' => 'embalm'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.call_received_by') }}
-                            @include('components.table.sort', ['field' => 'call_received_by'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.call_received_by_date_time') }}
-                            @include('components.table.sort', ['field' => 'call_received_by_date_time'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.removal_made_by') }}
-                            @include('components.table.sort', ['field' => 'removal_made_by'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.removal_date_time') }}
-                            @include('components.table.sort', ['field' => 'removal_date_time'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.personal_item_picked_up') }}
-                            @include('components.table.sort', ['field' => 'personal_item_picked_up'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.list_of_items_received') }}
-                            @include('components.table.sort', ['field' => 'list_of_items_received'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.family_notified') }}
-                            @include('components.table.sort', ['field' => 'family_notified'])
+                            {{ trans('cruds.body.fields.number_of_stairs') }}
+                            @include('components.table.sort', ['field' => 'number_of_stairs'])
                         </th>
                         <th>
                             {{ trans('cruds.body.fields.photo') }}
@@ -214,107 +94,13 @@
                                 {{ $body->date_of_birth }}
                             </td>
                             <td>
-                                {{ $body->death_date }}
-                            </td>
-                            <td>
-                                {{ $body->ssn }}
-                            </td>
-                            <td>
-                                {{ $body->height }}
-                            </td>
-                            <td>
-                                {{ $body->weight }}
-                            </td>
-                            <td>
-                                {{ $body->place_of_removal }}
-                            </td>
-                            <td>
-                                {{ $body->time_of_death }}
+                                {{ $body->death_time_date }}
                             </td>
                             <td>
                                 {{ $body->covid_label }}
                             </td>
                             <td>
-                                {{ $body->me_case_number }}
-                            </td>
-                            <td>
-                                {{ $body->house_removal_label }}
-                            </td>
-                            <td>
-                                {{ $body->rd_number }}
-                            </td>
-                            <td>
-                                {{ $body->stair_location_label }}
-                            </td>
-                            <td>
-                                {{ $body->family_ready_for_removal_label }}
-                            </td>
-                            <td>
-                                {{ $body->doctors_name }}
-                            </td>
-                            <td>
-                                {{ $body->doctors_phone_number }}
-                            </td>
-                            <td>
-                                {{ $body->doctors_fax }}
-                            </td>
-                            <td>
-                                {{ $body->at_need_service_id_number }}
-                            </td>
-                            <td>
-                                {{ $body->pre_need_number }}
-                            </td>
-                            <td>
-                                {{ $body->next_of_kin }}
-                            </td>
-                            <td>
-                                {{ $body->relationship }}
-                            </td>
-                            <td>
-                                {{ $body->next_of_kin_address }}
-                            </td>
-                            <td>
-                                {{ $body->next_of_kin_phone }}
-                            </td>
-                            <td>
-                                <a class="link-light-blue" href="mailto:{{ $body->next_of_kin_email }}">
-                                    <i class="far fa-envelope fa-fw">
-                                    </i>
-                                    {{ $body->next_of_kin_email }}
-                                </a>
-                            </td>
-                            <td>
-                                {{ $body->called_in_by }}
-                            </td>
-                            <td>
-                                {{ $body->called_in_by_relationship }}
-                            </td>
-                            <td>
-                                {{ $body->called_in_by_phone }}
-                            </td>
-                            <td>
-                                {{ $body->embalm_label }}
-                            </td>
-                            <td>
-                                {{ $body->call_received_by }}
-                            </td>
-                            <td>
-                                {{ $body->call_received_by_date_time }}
-                            </td>
-                            <td>
-                                {{ $body->removal_made_by }}
-                            </td>
-                            <td>
-                                {{ $body->removal_date_time }}
-                            </td>
-                            <td>
-                                {{ $body->personal_item_picked_up_label }}
-                            </td>
-                            <td>
-                                {{ $body->list_of_items_received }}
-                            </td>
-                            <td>
-                                {{ $body->family_notified }}
+                                {{ $body->number_of_stairs }}
                             </td>
                             <td>
                                 @foreach($body->photo as $key => $entry)

@@ -25,6 +25,10 @@ class UpdateBodyRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'service_id_number' => [
+                'string',
+                'nullable',
+            ],
             'first_name' => [
                 'string',
                 'required',
@@ -37,13 +41,9 @@ class UpdateBodyRequest extends FormRequest
                 'required',
                 'date_format:' . config('project.date_format'),
             ],
-            'death_date' => [
-                'required',
-                'date_format:' . config('project.date_format'),
-            ],
-            'ssn' => [
-                'string',
+            'body.death_time_date' => [
                 'nullable',
+                'date_format:' . config('project.datetime_format'),
             ],
             'height' => [
                 'string',
@@ -56,10 +56,6 @@ class UpdateBodyRequest extends FormRequest
             'place_of_removal' => [
                 'string',
                 'nullable',
-            ],
-            'time_of_death' => [
-                'nullable',
-                'date_format:' . config('project.time_format'),
             ],
             'covid' => [
                 'required',
@@ -77,9 +73,17 @@ class UpdateBodyRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'stair_location' => [
+            'stair_inside' => [
+                'boolean',
+            ],
+            'stairs_outside' => [
+                'boolean',
+            ],
+            'number_of_stairs' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
                 'nullable',
-                'in:' . implode(',', array_keys(Body::STAIR_LOCATION_SELECT)),
             ],
             'family_ready_for_removal' => [
                 'nullable',
@@ -107,19 +111,19 @@ class UpdateBodyRequest extends FormRequest
             ],
             'next_of_kin' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'relationship' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'next_of_kin_address' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'next_of_kin_phone' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'next_of_kin_email' => [
                 'email:rfc',

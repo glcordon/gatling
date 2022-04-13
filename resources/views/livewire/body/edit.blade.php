@@ -1,5 +1,15 @@
 <form wire:submit.prevent="submit" class="pt-3">
 
+    <div class="form-group {{ $errors->has('body.service_id_number') ? 'invalid' : '' }}">
+        <label class="form-label" for="service_id_number">{{ trans('cruds.body.fields.service_id_number') }}</label>
+        <input class="form-control" type="text" name="service_id_number" id="service_id_number" wire:model.defer="body.service_id_number">
+        <div class="validation-message">
+            {{ $errors->first('body.service_id_number') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.body.fields.service_id_number_helper') }}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('body.first_name') ? 'invalid' : '' }}">
         <label class="form-label required" for="first_name">{{ trans('cruds.body.fields.first_name') }}</label>
         <input class="form-control" type="text" name="first_name" id="first_name" required wire:model.defer="body.first_name">
@@ -30,24 +40,14 @@
             {{ trans('cruds.body.fields.date_of_birth_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('body.death_date') ? 'invalid' : '' }}">
-        <label class="form-label required" for="death_date">{{ trans('cruds.body.fields.death_date') }}</label>
-        <x-date-picker class="form-control" required wire:model="body.death_date" id="death_date" name="death_date" picker="date" />
+    <div class="form-group {{ $errors->has('body.death_time_date') ? 'invalid' : '' }}">
+        <label class="form-label" for="death_time_date">{{ trans('cruds.body.fields.death_time_date') }}</label>
+        <x-date-picker class="form-control" wire:model="body.death_time_date" id="death_time_date" name="death_time_date" />
         <div class="validation-message">
-            {{ $errors->first('body.death_date') }}
+            {{ $errors->first('body.death_time_date') }}
         </div>
         <div class="help-block">
-            {{ trans('cruds.body.fields.death_date_helper') }}
-        </div>
-    </div>
-    <div class="form-group {{ $errors->has('body.ssn') ? 'invalid' : '' }}">
-        <label class="form-label" for="ssn">{{ trans('cruds.body.fields.ssn') }}</label>
-        <input class="form-control" type="text" name="ssn" id="ssn" wire:model.defer="body.ssn">
-        <div class="validation-message">
-            {{ $errors->first('body.ssn') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.body.fields.ssn_helper') }}
+            {{ trans('cruds.body.fields.death_time_date_helper') }}
         </div>
     </div>
     <div class="form-group {{ $errors->has('body.height') ? 'invalid' : '' }}">
@@ -78,16 +78,6 @@
         </div>
         <div class="help-block">
             {{ trans('cruds.body.fields.place_of_removal_helper') }}
-        </div>
-    </div>
-    <div class="form-group {{ $errors->has('body.time_of_death') ? 'invalid' : '' }}">
-        <label class="form-label" for="time_of_death">{{ trans('cruds.body.fields.time_of_death') }}</label>
-        <x-date-picker class="form-control" wire:model="body.time_of_death" id="time_of_death" name="time_of_death" picker="time" />
-        <div class="validation-message">
-            {{ $errors->first('body.time_of_death') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.body.fields.time_of_death_helper') }}
         </div>
     </div>
     <div class="form-group {{ $errors->has('body.covid') ? 'invalid' : '' }}">
@@ -140,19 +130,34 @@
             {{ trans('cruds.body.fields.rd_number_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('body.stair_location') ? 'invalid' : '' }}">
-        <label class="form-label">{{ trans('cruds.body.fields.stair_location') }}</label>
-        <select class="form-control" wire:model="body.stair_location">
-            <option value="null" disabled>{{ trans('global.pleaseSelect') }}...</option>
-            @foreach($this->listsForFields['stair_location'] as $key => $value)
-                <option value="{{ $key }}">{{ $value }}</option>
-            @endforeach
-        </select>
+    <div class="form-group {{ $errors->has('body.stair_inside') ? 'invalid' : '' }}">
+        <input class="form-control" type="checkbox" name="stair_inside" id="stair_inside" wire:model.defer="body.stair_inside">
+        <label class="form-label inline ml-1" for="stair_inside">{{ trans('cruds.body.fields.stair_inside') }}</label>
         <div class="validation-message">
-            {{ $errors->first('body.stair_location') }}
+            {{ $errors->first('body.stair_inside') }}
         </div>
         <div class="help-block">
-            {{ trans('cruds.body.fields.stair_location_helper') }}
+            {{ trans('cruds.body.fields.stair_inside_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('body.stairs_outside') ? 'invalid' : '' }}">
+        <input class="form-control" type="checkbox" name="stairs_outside" id="stairs_outside" wire:model.defer="body.stairs_outside">
+        <label class="form-label inline ml-1" for="stairs_outside">{{ trans('cruds.body.fields.stairs_outside') }}</label>
+        <div class="validation-message">
+            {{ $errors->first('body.stairs_outside') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.body.fields.stairs_outside_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('body.number_of_stairs') ? 'invalid' : '' }}">
+        <label class="form-label" for="number_of_stairs">{{ trans('cruds.body.fields.number_of_stairs') }}</label>
+        <input class="form-control" type="number" name="number_of_stairs" id="number_of_stairs" wire:model.defer="body.number_of_stairs" step="1">
+        <div class="validation-message">
+            {{ $errors->first('body.number_of_stairs') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.body.fields.number_of_stairs_helper') }}
         </div>
     </div>
     <div class="form-group {{ $errors->has('body.family_ready_for_removal') ? 'invalid' : '' }}">
@@ -221,8 +226,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('body.next_of_kin') ? 'invalid' : '' }}">
-        <label class="form-label" for="next_of_kin">{{ trans('cruds.body.fields.next_of_kin') }}</label>
-        <input class="form-control" type="text" name="next_of_kin" id="next_of_kin" wire:model.defer="body.next_of_kin">
+        <label class="form-label required" for="next_of_kin">{{ trans('cruds.body.fields.next_of_kin') }}</label>
+        <input class="form-control" type="text" name="next_of_kin" id="next_of_kin" required wire:model.defer="body.next_of_kin">
         <div class="validation-message">
             {{ $errors->first('body.next_of_kin') }}
         </div>
@@ -231,8 +236,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('body.relationship') ? 'invalid' : '' }}">
-        <label class="form-label" for="relationship">{{ trans('cruds.body.fields.relationship') }}</label>
-        <input class="form-control" type="text" name="relationship" id="relationship" wire:model.defer="body.relationship">
+        <label class="form-label required" for="relationship">{{ trans('cruds.body.fields.relationship') }}</label>
+        <input class="form-control" type="text" name="relationship" id="relationship" required wire:model.defer="body.relationship">
         <div class="validation-message">
             {{ $errors->first('body.relationship') }}
         </div>
@@ -241,8 +246,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('body.next_of_kin_address') ? 'invalid' : '' }}">
-        <label class="form-label" for="next_of_kin_address">{{ trans('cruds.body.fields.next_of_kin_address') }}</label>
-        <textarea class="form-control" name="next_of_kin_address" id="next_of_kin_address" wire:model.defer="body.next_of_kin_address" rows="4"></textarea>
+        <label class="form-label required" for="next_of_kin_address">{{ trans('cruds.body.fields.next_of_kin_address') }}</label>
+        <textarea class="form-control" name="next_of_kin_address" id="next_of_kin_address" required wire:model.defer="body.next_of_kin_address" rows="4"></textarea>
         <div class="validation-message">
             {{ $errors->first('body.next_of_kin_address') }}
         </div>
@@ -251,8 +256,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('body.next_of_kin_phone') ? 'invalid' : '' }}">
-        <label class="form-label" for="next_of_kin_phone">{{ trans('cruds.body.fields.next_of_kin_phone') }}</label>
-        <input class="form-control" type="text" name="next_of_kin_phone" id="next_of_kin_phone" wire:model.defer="body.next_of_kin_phone">
+        <label class="form-label required" for="next_of_kin_phone">{{ trans('cruds.body.fields.next_of_kin_phone') }}</label>
+        <input class="form-control" type="text" name="next_of_kin_phone" id="next_of_kin_phone" required wire:model.defer="body.next_of_kin_phone">
         <div class="validation-message">
             {{ $errors->first('body.next_of_kin_phone') }}
         </div>

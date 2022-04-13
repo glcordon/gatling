@@ -71,6 +71,10 @@ class Edit extends Component
     protected function rules(): array
     {
         return [
+            'body.service_id_number' => [
+                'string',
+                'nullable',
+            ],
             'body.first_name' => [
                 'string',
                 'required',
@@ -83,13 +87,9 @@ class Edit extends Component
                 'required',
                 'date_format:' . config('project.date_format'),
             ],
-            'body.death_date' => [
-                'required',
-                'date_format:' . config('project.date_format'),
-            ],
-            'body.ssn' => [
-                'string',
+            'body.death_time_date' => [
                 'nullable',
+                'date_format:' . config('project.datetime_format'),
             ],
             'body.height' => [
                 'string',
@@ -102,10 +102,6 @@ class Edit extends Component
             'body.place_of_removal' => [
                 'string',
                 'nullable',
-            ],
-            'body.time_of_death' => [
-                'nullable',
-                'date_format:' . config('project.time_format'),
             ],
             'body.covid' => [
                 'required',
@@ -123,9 +119,17 @@ class Edit extends Component
                 'string',
                 'nullable',
             ],
-            'body.stair_location' => [
+            'body.stair_inside' => [
+                'boolean',
+            ],
+            'body.stairs_outside' => [
+                'boolean',
+            ],
+            'body.number_of_stairs' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
                 'nullable',
-                'in:' . implode(',', array_keys($this->listsForFields['stair_location'])),
             ],
             'body.family_ready_for_removal' => [
                 'nullable',
@@ -153,19 +157,19 @@ class Edit extends Component
             ],
             'body.next_of_kin' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'body.relationship' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'body.next_of_kin_address' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'body.next_of_kin_phone' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'body.next_of_kin_email' => [
                 'email:rfc',
@@ -230,7 +234,6 @@ class Edit extends Component
     {
         $this->listsForFields['covid']                    = $this->body::COVID_SELECT;
         $this->listsForFields['house_removal']            = $this->body::HOUSE_REMOVAL_SELECT;
-        $this->listsForFields['stair_location']           = $this->body::STAIR_LOCATION_SELECT;
         $this->listsForFields['family_ready_for_removal'] = $this->body::FAMILY_READY_FOR_REMOVAL_SELECT;
         $this->listsForFields['embalm']                   = $this->body::EMBALM_SELECT;
         $this->listsForFields['personal_item_picked_up']  = $this->body::PERSONAL_ITEM_PICKED_UP_SELECT;
