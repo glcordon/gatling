@@ -21,11 +21,6 @@ class Body extends Model implements HasMedia
     use InteractsWithMedia;
     use Auditable;
 
-    public const EMBALM_SELECT = [
-        'no'  => 'No',
-        'yes' => 'Yes',
-    ];
-
     public const HOUSE_REMOVAL_SELECT = [
         'yes' => 'Yes',
         'no'  => 'No',
@@ -47,14 +42,33 @@ class Body extends Model implements HasMedia
         'unknown' => 'UnKnown',
     ];
 
-    public const STAIR_LOCATION_SELECT = [
-        'Inside'  => 'Inside',
-        'outside' => 'Outside',
-        'both'    => 'Both',
-        'none'    => 'None',
+    public const EMBALM_SELECT = [
+        'no'      => 'No',
+        'yes'     => 'Yes',
+        'unknown' => 'Unknown',
     ];
 
     public $table = 'bodies';
+
+    public $orderable = [
+        'id',
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'death_time_date',
+        'covid',
+        'number_of_stairs',
+    ];
+
+    public $filterable = [
+        'id',
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'death_time_date',
+        'covid',
+        'number_of_stairs',
+    ];
 
     public static $search = [
         'first_name',
@@ -65,93 +79,18 @@ class Body extends Model implements HasMedia
         'next_of_kin_email',
     ];
 
-    public $orderable = [
-        'id',
-        'first_name',
-        'last_name',
-        'date_of_birth',
-        'death_date',
-        'ssn',
-        'height',
-        'weight',
-        'place_of_removal',
-        'time_of_death',
-        'covid',
-        'me_case_number',
-        'house_removal',
-        'rd_number',
-        'stair_location',
-        'family_ready_for_removal',
-        'doctors_name',
-        'doctors_phone_number',
-        'doctors_fax',
-        'at_need_service_id_number',
-        'pre_need_number',
-        'next_of_kin',
-        'relationship',
-        'next_of_kin_address',
-        'next_of_kin_phone',
-        'next_of_kin_email',
-        'called_in_by',
-        'called_in_by_relationship',
-        'called_in_by_phone',
-        'embalm',
-        'call_received_by',
-        'call_received_by_date_time',
-        'removal_made_by',
-        'removal_date_time',
-        'personal_item_picked_up',
-        'list_of_items_received',
-        'family_notified',
-    ];
-
-    public $filterable = [
-        'id',
-        'first_name',
-        'last_name',
-        'date_of_birth',
-        'death_date',
-        'ssn',
-        'height',
-        'weight',
-        'place_of_removal',
-        'time_of_death',
-        'covid',
-        'me_case_number',
-        'house_removal',
-        'rd_number',
-        'stair_location',
-        'family_ready_for_removal',
-        'doctors_name',
-        'doctors_phone_number',
-        'doctors_fax',
-        'at_need_service_id_number',
-        'pre_need_number',
-        'next_of_kin',
-        'relationship',
-        'next_of_kin_address',
-        'next_of_kin_phone',
-        'next_of_kin_email',
-        'called_in_by',
-        'called_in_by_relationship',
-        'called_in_by_phone',
-        'embalm',
-        'call_received_by',
-        'call_received_by_date_time',
-        'removal_made_by',
-        'removal_date_time',
-        'personal_item_picked_up',
-        'list_of_items_received',
-        'family_notified',
-    ];
-
     protected $appends = [
         'photo',
     ];
 
+    protected $casts = [
+        'stair_inside'   => 'boolean',
+        'stairs_outside' => 'boolean',
+    ];
+
     protected $dates = [
         'date_of_birth',
-        'death_date',
+        'death_time_date',
         'call_received_by_date_time',
         'removal_date_time',
         'created_at',
@@ -160,20 +99,21 @@ class Body extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'service_id_number',
         'first_name',
         'last_name',
         'date_of_birth',
-        'death_date',
-        'ssn',
+        'death_time_date',
         'height',
         'weight',
         'place_of_removal',
-        'time_of_death',
         'covid',
         'me_case_number',
         'house_removal',
         'rd_number',
-        'stair_location',
+        'stair_inside',
+        'stairs_outside',
+        'number_of_stairs',
         'family_ready_for_removal',
         'doctors_name',
         'doctors_phone_number',
@@ -226,14 +166,14 @@ class Body extends Model implements HasMedia
         $this->attributes['date_of_birth'] = $value ? Carbon::createFromFormat(config('project.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function getDeathDateAttribute($value)
+    public function getDeathTimeDateAttribute($value)
     {
-        return $value ? Carbon::parse($value)->format(config('project.date_format')) : null;
+        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('project.datetime_format')) : null;
     }
 
-    public function setDeathDateAttribute($value)
+    public function setDeathTimeDateAttribute($value)
     {
-        $this->attributes['death_date'] = $value ? Carbon::createFromFormat(config('project.date_format'), $value)->format('Y-m-d') : null;
+        $this->attributes['death_time_date'] = $value ? Carbon::createFromFormat(config('project.datetime_format'), $value)->format('Y-m-d H:i:s') : null;
     }
 
     public function getCovidLabelAttribute($value)
@@ -244,11 +184,6 @@ class Body extends Model implements HasMedia
     public function getHouseRemovalLabelAttribute($value)
     {
         return static::HOUSE_REMOVAL_SELECT[$this->house_removal] ?? null;
-    }
-
-    public function getStairLocationLabelAttribute($value)
-    {
-        return static::STAIR_LOCATION_SELECT[$this->stair_location] ?? null;
     }
 
     public function getFamilyReadyForRemovalLabelAttribute($value)
