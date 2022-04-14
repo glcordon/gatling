@@ -41,15 +41,13 @@
                         <th class="w-9">
                         </th>
                         <th class="w-28">
-                            {{ trans('cruds.body.fields.id') }}
-                            @include('components.table.sort', ['field' => 'id'])
+                            {{ trans('cruds.body.fields.service_id_number') }}
+                            @include('components.table.sort', ['field' => 'service_id_number'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.first_name') }}
-                            @include('components.table.sort', ['field' => 'first_name'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.last_name') }}
+                            
+                        
+                            {{ trans('cruds.body.fields.last_name') }}, {{ trans('cruds.body.fields.first_name') }}
                             @include('components.table.sort', ['field' => 'last_name'])
                         </th>
                         <th>
@@ -82,13 +80,12 @@
                                 <input type="checkbox" value="{{ $body->id }}" wire:model="selected">
                             </td>
                             <td>
-                                {{ $body->id }}
+                                {{ $body->service_id_number }}
                             </td>
                             <td>
-                                {{ $body->first_name }}
-                            </td>
-                            <td>
-                                {{ $body->last_name }}
+                                {{ $body->last_name }}, {{ $body->first_name }}
+                            
+                                
                             </td>
                             <td>
                                 {{ $body->date_of_birth }}
@@ -114,6 +111,11 @@
                                     @can('body_show')
                                         <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.bodies.show', $body) }}">
                                             {{ trans('global.view') }}
+                                        </a>
+                                    @endcan
+                                    @can('body_show')
+                                        <a class="btn btn-sm btn-dark mr-2" href="{{ route('qrcode', $body->id) }}" target="_blank">
+                                            QR
                                         </a>
                                     @endcan
                                     @can('body_edit')

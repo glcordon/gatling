@@ -8,10 +8,11 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserAlertController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\UserProfileController;
+use App\Http\Controllers\QrController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/login');
+Route::redirect('/', '/gatling/login');
 
 Auth::routes(['register' => false]);
 
@@ -37,8 +38,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     // Bodies
     Route::post('bodies/media', [BodyController::class, 'storeMedia'])->name('bodies.storeMedia');
     Route::resource('bodies', BodyController::class, ['except' => ['store', 'update', 'destroy']]);
+    //QR
+    
 });
-
+Route::get('generate-qrcode/{id?}', [QrController::class, 'index'])->name('qrcode');
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {
     if (file_exists(app_path('Http/Controllers/Auth/UserProfileController.php'))) {
         Route::get('/', [UserProfileController::class, 'show'])->name('show');
