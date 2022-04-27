@@ -10,6 +10,15 @@
             {{ trans('cruds.body.fields.service_id_number_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('body.funeral_home_rep') ? 'invalid' : '' }}">
+        <label class="form-label" for="funeral_home_rep">Funeral Home Rep</label>
+        <input class="form-control" type="text" name="funeral_home_rep" id="funeral_home_rep" wire:model.defer="body.funeral_home_rep">
+        <div class="validation-message">
+            {{ $errors->first('body.funeral_home_rep') }}
+        </div>
+        <div class="help-block">
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('body.first_name') ? 'invalid' : '' }}">
         <label class="form-label required" for="first_name">{{ trans('cruds.body.fields.first_name') }}</label>
         <input class="form-control" type="text" name="first_name" id="first_name" required wire:model.defer="body.first_name">
@@ -403,6 +412,15 @@
         </div>
         <div class="help-block">
             {{ trans('cruds.body.fields.crematorium_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('body.date_sent_to_crematoreum') ? 'invalid' : '' }}">
+        <label class="form-label" for="date_sent_to_crematoreum">Date Sent To Crematoreum</label>
+        <x-date-picker class="form-control" required wire:model="body.date_sent_to_crematoreum" id="date_sent_to_crematoreum" name="date_sent_to_crematoreum" picker="date" />
+        <div class="validation-message">
+            {{ $errors->first('body.date_sent_to_crematoreum') }}
+        </div>
+        <div class="help-block">
         </div>
     </div>
 

@@ -35,6 +35,14 @@
                         </tr>
                         <tr>
                             <th>
+                                Funeral Home Rep
+                            </th>
+                            <td>
+                                {{ $body->funeral_home_rep }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 {{ trans('cruds.body.fields.first_name') }}
                             </th>
                             <td>
@@ -337,7 +345,9 @@
                             </th>
                             <td>
                                 @if($body->crematorium)
-                                    <span class="badge badge-relationship">{{ $body->crematorium->crematorium_name ?? '' }}</span>
+                                    <span class="badge badge-relationship">{{ $body->crematorium->crematorium_name ?? '' }}</span><br />
+                                    <span class="badge badge-relationship">{{ $body->date_sent_to_crematoreum ?? '' }}</span><br />
+                                    
                                 @endif
                             </td>
                         </tr>

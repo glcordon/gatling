@@ -89,6 +89,9 @@ class Edit extends Component
                 'required',
                 'date_format:' . config('project.date_format'),
             ],
+            'body.date_sent_to_crematoreum' => [
+                'date_format:' . config('project.date_format'),
+            ],
             'body.death_time_date' => [
                 'nullable',
                 'date_format:' . config('project.datetime_format'),
@@ -106,7 +109,7 @@ class Edit extends Component
                 'nullable',
             ],
             'body.covid' => [
-                'required',
+                'string',
                 'in:' . implode(',', array_keys($this->listsForFields['covid'])),
             ],
             'body.me_case_number' => [
@@ -138,6 +141,10 @@ class Edit extends Component
                 'in:' . implode(',', array_keys($this->listsForFields['family_ready_for_removal'])),
             ],
             'body.doctors_name' => [
+                'string',
+                'nullable',
+            ],
+            'body.funeral_home_rep' => [
                 'string',
                 'nullable',
             ],
