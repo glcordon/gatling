@@ -45,12 +45,9 @@
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.first_name') }}
-                            @include('components.table.sort', ['field' => 'first_name'])
-                        </th>
-                        <th>
                             {{ trans('cruds.body.fields.last_name') }}
-                            @include('components.table.sort', ['field' => 'last_name'])
+                            @include('components.table.sort', ['field' => 'last_name']),
+                            {{ trans('cruds.body.fields.first_name') }}
                         </th>
                         <th>
                             {{ trans('cruds.body.fields.date_of_birth') }}
@@ -97,10 +94,9 @@
                                 {{ $body->id }}
                             </td>
                             <td>
+                                {{ $body->last_name }}, 
                                 {{ $body->first_name }}
-                            </td>
-                            <td>
-                                {{ $body->last_name }}
+                            
                             </td>
                             <td>
                                 {{ $body->date_of_birth }}
@@ -139,6 +135,11 @@
                                     @can('body_show')
                                         <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.bodies.show', $body) }}">
                                             {{ trans('global.view') }}
+                                        </a>
+                                    @endcan
+                                    @can('body_show')
+                                        <a class="btn btn-sm btn-dark mr-2" href="{{ route('qrcode', $body->id) }}" target="_blank">
+                                            QR
                                         </a>
                                     @endcan
                                     @can('body_edit')
