@@ -26,6 +26,7 @@ class User extends Authenticatable implements HasLocalePreference
     public $orderable = [
         'id',
         'name',
+        'username',
         'email',
         'email_verified_at',
         'locale',
@@ -34,6 +35,7 @@ class User extends Authenticatable implements HasLocalePreference
     public $filterable = [
         'id',
         'name',
+        'username',
         'email',
         'email_verified_at',
         'roles.title',
@@ -47,6 +49,7 @@ class User extends Authenticatable implements HasLocalePreference
 
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
         'locale',

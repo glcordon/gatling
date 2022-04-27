@@ -63,8 +63,8 @@
                             @include('components.table.sort', ['field' => 'covid'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.number_of_stairs') }}
-                            @include('components.table.sort', ['field' => 'number_of_stairs'])
+                            {{ trans('cruds.body.fields.num_stairs') }}
+                            @include('components.table.sort', ['field' => 'num_stairs_inside'])
                         </th>
                         <th>
                             {{ trans('cruds.body.fields.photo') }}
@@ -97,7 +97,8 @@
                                 {{ $body->covid_label }}
                             </td>
                             <td>
-                                {{ $body->number_of_stairs }}
+                                {{  (!isset($body->num_stairs_inside) || $body->num_stairs_inside == '') ? '--' : $body->num_stairs_inside }} 
+                                <small><em>in.</em></small> / {{ (!isset($body->num_stairs_outside) || $body->num_stairs_outside == '') ? '--' : $body->num_stairs_outside }} <small><em>out.</em></small>
                             </td>
                             <td>
                                 @foreach($body->photo as $key => $entry)

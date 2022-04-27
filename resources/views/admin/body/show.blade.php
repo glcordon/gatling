@@ -121,28 +121,21 @@
                                 {{ $body->rd_number }}
                             </td>
                         </tr>
+                        
                         <tr>
                             <th>
-                                {{ trans('cruds.body.fields.stair_inside') }}
+                                {{ trans('cruds.body.fields.num_stairs_inside') }}
                             </th>
                             <td>
-                                <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $body->stair_inside ? 'checked' : '' }}>
+                                {{ $body->num_stairs_inside }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.body.fields.stairs_outside') }}
+                                {{ trans('cruds.body.fields.num_stairs_outside') }}
                             </th>
                             <td>
-                                <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $body->stairs_outside ? 'checked' : '' }}>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.body.fields.number_of_stairs') }}
-                            </th>
-                            <td>
-                                {{ $body->number_of_stairs }}
+                                {{ $body->num_stairs_outside }}
                             </td>
                         </tr>
                         <tr>

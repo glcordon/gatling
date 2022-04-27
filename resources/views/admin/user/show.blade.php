@@ -35,7 +35,7 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.email') }}
+                                {{ trans('cruds.user.fields.username') }}
                             </th>
                             <td>
                                 <a class="link-light-blue" href="mailto:{{ $user->email }}">

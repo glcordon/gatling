@@ -49,6 +49,10 @@
                             @include('components.table.sort', ['field' => 'name'])
                         </th>
                         <th>
+                            {{ trans('cruds.user.fields.username') }}
+                            @include('components.table.sort', ['field' => 'username'])
+                        </th>
+                        <th>
                             {{ trans('cruds.user.fields.email') }}
                             @include('components.table.sort', ['field' => 'email'])
                         </th>
@@ -78,6 +82,9 @@
                             </td>
                             <td>
                                 {{ $user->name }}
+                            </td>
+                            <td>
+                                {{ $user->username }}
                             </td>
                             <td>
                                 <a class="link-light-blue" href="mailto:{{ $user->email }}">

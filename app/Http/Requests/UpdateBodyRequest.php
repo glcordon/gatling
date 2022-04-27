@@ -83,7 +83,6 @@ class UpdateBodyRequest extends FormRequest
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'nullable',
             ],
             'family_ready_for_removal' => [
                 'nullable',

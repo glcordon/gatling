@@ -10,6 +10,17 @@
             {{ trans('cruds.user.fields.name_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('user.username') ? 'invalid' : '' }}">
+        <label class="form-label required" for="username">{{ trans('cruds.user.fields.username') }}</label>
+        <input class="form-control" type="text" name="username" id="username" required wire:model.defer="user.username">
+        <div class="validation-message">
+            {{ $errors->first('user.username') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.user.fields.username_helper') }}
+        </div>
+    </div>
+    
     <div class="form-group {{ $errors->has('user.email') ? 'invalid' : '' }}">
         <label class="form-label required" for="email">{{ trans('cruds.user.fields.email') }}</label>
         <input class="form-control" type="email" name="email" id="email" required wire:model.defer="user.email">

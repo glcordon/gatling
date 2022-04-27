@@ -45,9 +45,12 @@ class Edit extends Component
                 'string',
                 'required',
             ],
+            'user.username' => [
+                'string',
+                'required',
+            ],
             'user.email' => [
                 'email:rfc',
-                'required',
                 'unique:users,email,' . $this->user->id,
             ],
             'password' => [
