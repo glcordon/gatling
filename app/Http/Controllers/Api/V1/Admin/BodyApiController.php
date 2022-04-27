@@ -20,7 +20,7 @@ class BodyApiController extends Controller
     {
         abort_if(Gate::denies('body_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new BodyResource(Body::all());
+        return new BodyResource(Body::with(['location', 'crematorium'])->get());
     }
 
     public function store(StoreBodyRequest $request)
@@ -40,7 +40,7 @@ class BodyApiController extends Controller
     {
         abort_if(Gate::denies('body_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new BodyResource($body);
+        return new BodyResource($body->load(['location', 'crematorium']));
     }
 
     public function update(UpdateBodyRequest $request, Body $body)

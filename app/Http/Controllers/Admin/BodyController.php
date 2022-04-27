@@ -35,6 +35,8 @@ class BodyController extends Controller
     {
         abort_if(Gate::denies('body_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $body->load('location', 'crematorium');
+
         return view('admin.body.show', compact('body'));
     }
 

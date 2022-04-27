@@ -50,6 +50,14 @@ class Body extends Model implements HasMedia
 
     public $table = 'bodies';
 
+    public static $search = [
+        'first_name',
+        'last_name',
+        'covid',
+        'doctors_name',
+        'next_of_kin_email',
+    ];
+
     public $orderable = [
         'id',
         'first_name',
@@ -57,7 +65,10 @@ class Body extends Model implements HasMedia
         'date_of_birth',
         'death_time_date',
         'covid',
-        'number_of_stairs',
+        'number_stairs_inside',
+        'number_stairs_outside',
+        'location.name',
+        'location.city',
     ];
 
     public $filterable = [
@@ -67,25 +78,14 @@ class Body extends Model implements HasMedia
         'date_of_birth',
         'death_time_date',
         'covid',
-        'number_of_stairs',
-    ];
-
-    public static $search = [
-        'first_name',
-        'last_name',
-        'covid',
-        'doctors_name',
-        'at_need_service_id_number',
-        'next_of_kin_email',
+        'number_stairs_inside',
+        'number_stairs_outside',
+        'location.name',
+        'location.city',
     ];
 
     protected $appends = [
         'photo',
-    ];
-
-    protected $casts = [
-        'stair_inside'   => 'boolean',
-        'stairs_outside' => 'boolean',
     ];
 
     protected $dates = [
@@ -111,14 +111,12 @@ class Body extends Model implements HasMedia
         'me_case_number',
         'house_removal',
         'rd_number',
-        'stair_inside',
-        'stairs_outside',
-        'number_of_stairs',
+        'number_stairs_inside',
+        'number_stairs_outside',
         'family_ready_for_removal',
         'doctors_name',
         'doctors_phone_number',
         'doctors_fax',
-        'at_need_service_id_number',
         'pre_need_number',
         'next_of_kin',
         'relationship',
@@ -136,6 +134,8 @@ class Body extends Model implements HasMedia
         'personal_item_picked_up',
         'list_of_items_received',
         'family_notified',
+        'location_id',
+        'crematorium_id',
     ];
 
     public function registerMediaConversions(Media $media = null): void
@@ -231,6 +231,16 @@ class Body extends Model implements HasMedia
 
             return $media;
         });
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function crematorium()
+    {
+        return $this->belongsTo(Crematorium::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

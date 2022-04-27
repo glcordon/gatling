@@ -65,11 +65,23 @@
                             @include('components.table.sort', ['field' => 'covid'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.number_of_stairs') }}
-                            @include('components.table.sort', ['field' => 'number_of_stairs'])
+                            {{ trans('cruds.body.fields.number_stairs_inside') }}
+                            @include('components.table.sort', ['field' => 'number_stairs_inside'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.body.fields.number_stairs_outside') }}
+                            @include('components.table.sort', ['field' => 'number_stairs_outside'])
                         </th>
                         <th>
                             {{ trans('cruds.body.fields.photo') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.body.fields.location') }}
+                            @include('components.table.sort', ['field' => 'location.name'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.location.fields.city') }}
+                            @include('components.table.sort', ['field' => 'location.city'])
                         </th>
                         <th>
                         </th>
@@ -100,7 +112,10 @@
                                 {{ $body->covid_label }}
                             </td>
                             <td>
-                                {{ $body->number_of_stairs }}
+                                {{ $body->number_stairs_inside }}
+                            </td>
+                            <td>
+                                {{ $body->number_stairs_outside }}
                             </td>
                             <td>
                                 @foreach($body->photo as $key => $entry)
@@ -108,6 +123,16 @@
                                         <img src="{{ $entry['thumbnail'] }}" alt="{{ $entry['name'] }}" title="{{ $entry['name'] }}">
                                     </a>
                                 @endforeach
+                            </td>
+                            <td>
+                                @if($body->location)
+                                    <span class="badge badge-relationship">{{ $body->location->name ?? '' }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($body->location)
+                                    {{ $body->location->city ?? '' }}
+                                @endif
                             </td>
                             <td>
                                 <div class="flex justify-end">

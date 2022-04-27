@@ -123,26 +123,18 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.body.fields.stair_inside') }}
+                                {{ trans('cruds.body.fields.number_stairs_inside') }}
                             </th>
                             <td>
-                                <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $body->stair_inside ? 'checked' : '' }}>
+                                {{ $body->number_stairs_inside }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.body.fields.stairs_outside') }}
+                                {{ trans('cruds.body.fields.number_stairs_outside') }}
                             </th>
                             <td>
-                                <input class="disabled:opacity-50 disabled:cursor-not-allowed" type="checkbox" disabled {{ $body->stairs_outside ? 'checked' : '' }}>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.body.fields.number_of_stairs') }}
-                            </th>
-                            <td>
-                                {{ $body->number_of_stairs }}
+                                {{ $body->number_stairs_outside }}
                             </td>
                         </tr>
                         <tr>
@@ -175,14 +167,6 @@
                             </th>
                             <td>
                                 {{ $body->doctors_fax }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.body.fields.at_need_service_id_number') }}
-                            </th>
-                            <td>
-                                {{ $body->at_need_service_id_number }}
                             </td>
                         </tr>
                         <tr>
@@ -335,6 +319,26 @@
                                         <img src="{{ $entry['preview_thumbnail'] }}" alt="{{ $entry['name'] }}" title="{{ $entry['name'] }}">
                                     </a>
                                 @endforeach
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.body.fields.location') }}
+                            </th>
+                            <td>
+                                @if($body->location)
+                                    <span class="badge badge-relationship">{{ $body->location->name ?? '' }}</span>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.body.fields.crematorium') }}
+                            </th>
+                            <td>
+                                @if($body->crematorium)
+                                    <span class="badge badge-relationship">{{ $body->crematorium->crematorium_name ?? '' }}</span>
+                                @endif
                             </td>
                         </tr>
                     </tbody>
