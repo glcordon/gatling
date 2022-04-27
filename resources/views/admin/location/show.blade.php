@@ -6,9 +6,9 @@
             <div class="card-header-container">
                 <h6 class="card-title">
                     {{ trans('global.view') }}
-                    {{ trans('cruds.user.title_singular') }}:
-                    {{ trans('cruds.user.fields.id') }}
-                    {{ $user->id }}
+                    {{ trans('cruds.location.title_singular') }}:
+                    {{ trans('cruds.location.fields.id') }}
+                    {{ $location->id }}
                 </h6>
             </div>
         </div>
@@ -19,68 +19,62 @@
                     <tbody class="bg-white">
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.id') }}
+                                {{ trans('cruds.location.fields.id') }}
                             </th>
                             <td>
-                                {{ $user->id }}
+                                {{ $location->id }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.name') }}
+                                {{ trans('cruds.location.fields.name') }}
                             </th>
                             <td>
-                                {{ $user->name }}
+                                {{ $location->name }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.email') }}
+                                {{ trans('cruds.location.fields.phone') }}
                             </th>
                             <td>
-                                <a class="link-light-blue" href="mailto:{{ $user->email }}">
-                                    <i class="far fa-envelope fa-fw">
-                                    </i>
-                                    {{ $user->email }}
-                                </a>
+                                {{ $location->phone }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.email_verified_at') }}
+                                {{ trans('cruds.location.fields.city') }}
                             </th>
                             <td>
-                                {{ $user->email_verified_at }}
+                                {{ $location->city }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.roles') }}
+                                {{ trans('cruds.location.fields.state') }}
                             </th>
                             <td>
-                                @foreach($user->roles as $key => $entry)
-                                    <span class="badge badge-relationship">{{ $entry->title }}</span>
-                                @endforeach
+                                {{ $location->state }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.locale') }}
+                                {{ trans('cruds.location.fields.zip') }}
                             </th>
                             <td>
-                                {{ $user->locale }}
+                                {{ $location->zip }}
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="form-group">
-                @can('user_edit')
-                    <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-indigo mr-2">
+                @can('location_edit')
+                    <a href="{{ route('admin.locations.edit', $location) }}" class="btn btn-indigo mr-2">
                         {{ trans('global.edit') }}
                     </a>
                 @endcan
-                <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
+                <a href="{{ route('admin.locations.index') }}" class="btn btn-secondary">
                     {{ trans('global.back') }}
                 </a>
             </div>

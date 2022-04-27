@@ -126,6 +126,46 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 29,
                 'title' => 'body_access',
             ],
+            [
+                'id'    => 30,
+                'title' => 'crematorium_create',
+            ],
+            [
+                'id'    => 31,
+                'title' => 'crematorium_edit',
+            ],
+            [
+                'id'    => 32,
+                'title' => 'crematorium_show',
+            ],
+            [
+                'id'    => 33,
+                'title' => 'crematorium_delete',
+            ],
+            [
+                'id'    => 34,
+                'title' => 'crematorium_access',
+            ],
+            [
+                'id'    => 35,
+                'title' => 'location_create',
+            ],
+            [
+                'id'    => 36,
+                'title' => 'location_edit',
+            ],
+            [
+                'id'    => 37,
+                'title' => 'location_show',
+            ],
+            [
+                'id'    => 38,
+                'title' => 'location_delete',
+            ],
+            [
+                'id'    => 39,
+                'title' => 'location_access',
+            ],
         ];
 
         Permission::insert($permissions);

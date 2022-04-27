@@ -44,12 +44,9 @@ class Create extends Component
                 'string',
                 'required',
             ],
-            'user.username' => [
-                'string',
-                'required',
-            ],
             'user.email' => [
                 'email:rfc',
+                'required',
                 'unique:users,email',
             ],
             'password' => [

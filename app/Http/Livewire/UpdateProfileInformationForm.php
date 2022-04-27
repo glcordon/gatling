@@ -13,7 +13,6 @@ class UpdateProfileInformationForm extends Component
 
     protected $validationAttributes = [
         'state.name'  => 'name',
-        'state.username'  => 'name',
         'state.email' => 'email',
     ];
 
@@ -44,8 +43,8 @@ class UpdateProfileInformationForm extends Component
     {
         return [
             'state.name'  => ['required', 'string', 'max:255'],
-            'state.username'  => ['required', 'string', 'max:255'],
             'state.email' => [
+                'required',
                 'string',
                 'email',
                 'max:255',
