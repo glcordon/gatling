@@ -22,14 +22,12 @@ class CreateBodiesTable extends Migration
             $table->string('me_case_number')->nullable();
             $table->string('house_removal')->nullable();
             $table->string('rd_number')->nullable();
-            $table->boolean('stair_inside')->default(0)->nullable();
-            $table->boolean('stairs_outside')->default(0)->nullable();
-            $table->integer('number_of_stairs')->nullable();
+            $table->integer('number_stairs_inside');
+            $table->integer('number_stairs_outside');
             $table->string('family_ready_for_removal')->nullable();
             $table->string('doctors_name')->nullable();
             $table->string('doctors_phone_number')->nullable();
             $table->string('doctors_fax')->nullable();
-            $table->string('at_need_service_id_number')->nullable();
             $table->string('pre_need_number')->nullable();
             $table->string('next_of_kin');
             $table->string('relationship');

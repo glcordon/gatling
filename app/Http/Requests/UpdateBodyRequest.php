@@ -73,17 +73,17 @@ class UpdateBodyRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'stair_inside' => [
-                'boolean',
-            ],
-            'stairs_outside' => [
-                'boolean',
-            ],
-            'number_of_stairs' => [
+            'number_stairs_inside' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'nullable',
+                'required',
+            ],
+            'number_stairs_outside' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'required',
             ],
             'family_ready_for_removal' => [
                 'nullable',
@@ -98,10 +98,6 @@ class UpdateBodyRequest extends FormRequest
                 'nullable',
             ],
             'doctors_fax' => [
-                'string',
-                'nullable',
-            ],
-            'at_need_service_id_number' => [
                 'string',
                 'nullable',
             ],
@@ -171,6 +167,16 @@ class UpdateBodyRequest extends FormRequest
             ],
             'family_notified' => [
                 'string',
+                'nullable',
+            ],
+            'location_id' => [
+                'integer',
+                'exists:locations,id',
+                'nullable',
+            ],
+            'crematorium_id' => [
+                'integer',
+                'exists:crematoria,id',
                 'nullable',
             ],
         ];

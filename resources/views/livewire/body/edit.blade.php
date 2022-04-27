@@ -130,34 +130,24 @@
             {{ trans('cruds.body.fields.rd_number_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('body.stair_inside') ? 'invalid' : '' }}">
-        <input class="form-control" type="checkbox" name="stair_inside" id="stair_inside" wire:model.defer="body.stair_inside">
-        <label class="form-label inline ml-1" for="stair_inside">{{ trans('cruds.body.fields.stair_inside') }}</label>
+    <div class="form-group {{ $errors->has('body.number_stairs_inside') ? 'invalid' : '' }}">
+        <label class="form-label required" for="number_stairs_inside">{{ trans('cruds.body.fields.number_stairs_inside') }}</label>
+        <input class="form-control" type="number" name="number_stairs_inside" id="number_stairs_inside" required wire:model.defer="body.number_stairs_inside" step="1">
         <div class="validation-message">
-            {{ $errors->first('body.stair_inside') }}
+            {{ $errors->first('body.number_stairs_inside') }}
         </div>
         <div class="help-block">
-            {{ trans('cruds.body.fields.stair_inside_helper') }}
+            {{ trans('cruds.body.fields.number_stairs_inside_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('body.stairs_outside') ? 'invalid' : '' }}">
-        <input class="form-control" type="checkbox" name="stairs_outside" id="stairs_outside" wire:model.defer="body.stairs_outside">
-        <label class="form-label inline ml-1" for="stairs_outside">{{ trans('cruds.body.fields.stairs_outside') }}</label>
+    <div class="form-group {{ $errors->has('body.number_stairs_outside') ? 'invalid' : '' }}">
+        <label class="form-label required" for="number_stairs_outside">{{ trans('cruds.body.fields.number_stairs_outside') }}</label>
+        <input class="form-control" type="number" name="number_stairs_outside" id="number_stairs_outside" required wire:model.defer="body.number_stairs_outside" step="1">
         <div class="validation-message">
-            {{ $errors->first('body.stairs_outside') }}
+            {{ $errors->first('body.number_stairs_outside') }}
         </div>
         <div class="help-block">
-            {{ trans('cruds.body.fields.stairs_outside_helper') }}
-        </div>
-    </div>
-    <div class="form-group {{ $errors->has('body.number_of_stairs') ? 'invalid' : '' }}">
-        <label class="form-label" for="number_of_stairs">{{ trans('cruds.body.fields.number_of_stairs') }}</label>
-        <input class="form-control" type="number" name="number_of_stairs" id="number_of_stairs" wire:model.defer="body.number_of_stairs" step="1">
-        <div class="validation-message">
-            {{ $errors->first('body.number_of_stairs') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.body.fields.number_of_stairs_helper') }}
+            {{ trans('cruds.body.fields.number_stairs_outside_helper') }}
         </div>
     </div>
     <div class="form-group {{ $errors->has('body.family_ready_for_removal') ? 'invalid' : '' }}">
@@ -203,16 +193,6 @@
         </div>
         <div class="help-block">
             {{ trans('cruds.body.fields.doctors_fax_helper') }}
-        </div>
-    </div>
-    <div class="form-group {{ $errors->has('body.at_need_service_id_number') ? 'invalid' : '' }}">
-        <label class="form-label" for="at_need_service_id_number">{{ trans('cruds.body.fields.at_need_service_id_number') }}</label>
-        <input class="form-control" type="text" name="at_need_service_id_number" id="at_need_service_id_number" wire:model.defer="body.at_need_service_id_number">
-        <div class="validation-message">
-            {{ $errors->first('body.at_need_service_id_number') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.body.fields.at_need_service_id_number_helper') }}
         </div>
     </div>
     <div class="form-group {{ $errors->has('body.pre_need_number') ? 'invalid' : '' }}">
@@ -403,6 +383,26 @@
         </div>
         <div class="help-block">
             {{ trans('cruds.body.fields.photo_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('body.location_id') ? 'invalid' : '' }}">
+        <label class="form-label" for="location">{{ trans('cruds.body.fields.location') }}</label>
+        <x-select-list class="form-control" id="location" name="location" :options="$this->listsForFields['location']" wire:model="body.location_id" />
+        <div class="validation-message">
+            {{ $errors->first('body.location_id') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.body.fields.location_helper') }}
+        </div>
+    </div>
+    <div class="form-group {{ $errors->has('body.crematorium_id') ? 'invalid' : '' }}">
+        <label class="form-label" for="crematorium">{{ trans('cruds.body.fields.crematorium') }}</label>
+        <x-select-list class="form-control" id="crematorium" name="crematorium" :options="$this->listsForFields['crematorium']" wire:model="body.crematorium_id" />
+        <div class="validation-message">
+            {{ $errors->first('body.crematorium_id') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.body.fields.crematorium_helper') }}
         </div>
     </div>
 

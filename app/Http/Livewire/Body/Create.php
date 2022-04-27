@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Body;
 
 use App\Models\Body;
+use App\Models\Crematorium;
+use App\Models\Location;
 use Livewire\Component;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -32,9 +34,7 @@ class Create extends Component
 
     public function mount(Body $body)
     {
-        $this->body                 = $body;
-        $this->body->stair_inside   = false;
-        $this->body->stairs_outside = false;
+        $this->body = $body;
         $this->initListsForFields();
     }
 
@@ -113,17 +113,17 @@ class Create extends Component
                 'string',
                 'nullable',
             ],
-            'body.stair_inside' => [
-                'boolean',
-            ],
-            'body.stairs_outside' => [
-                'boolean',
-            ],
-            'body.number_of_stairs' => [
+            'body.number_stairs_inside' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'nullable',
+                'required',
+            ],
+            'body.number_stairs_outside' => [
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'required',
             ],
             'body.family_ready_for_removal' => [
                 'nullable',
@@ -138,10 +138,6 @@ class Create extends Component
                 'nullable',
             ],
             'body.doctors_fax' => [
-                'string',
-                'nullable',
-            ],
-            'body.at_need_service_id_number' => [
                 'string',
                 'nullable',
             ],
@@ -221,6 +217,16 @@ class Create extends Component
                 'integer',
                 'exists:media,id',
             ],
+            'body.location_id' => [
+                'integer',
+                'exists:locations,id',
+                'nullable',
+            ],
+            'body.crematorium_id' => [
+                'integer',
+                'exists:crematoria,id',
+                'nullable',
+            ],
         ];
     }
 
@@ -231,5 +237,7 @@ class Create extends Component
         $this->listsForFields['family_ready_for_removal'] = $this->body::FAMILY_READY_FOR_REMOVAL_SELECT;
         $this->listsForFields['embalm']                   = $this->body::EMBALM_SELECT;
         $this->listsForFields['personal_item_picked_up']  = $this->body::PERSONAL_ITEM_PICKED_UP_SELECT;
+        $this->listsForFields['location']                 = Location::pluck('name', 'id')->toArray();
+        $this->listsForFields['crematorium']              = Crematorium::pluck('crematorium_name', 'id')->toArray();
     }
 }
