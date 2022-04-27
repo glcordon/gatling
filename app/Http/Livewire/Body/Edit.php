@@ -118,17 +118,18 @@ class Edit extends Component
             'body.rd_number' => [
                 'string',
                 'nullable',
-            ],'body.num_stairs_outside' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                //'nullable',
             ],
-            'body.num_stairs_inside' => [
+            'body.stair_inside' => [
+                'boolean',
+            ],
+            'body.stairs_outside' => [
+                'boolean',
+            ],
+            'body.number_of_stairs' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                //'nullable',
+                'nullable',
             ],
             'body.family_ready_for_removal' => [
                 'nullable',

@@ -54,6 +54,24 @@
                         </a>
                     </li>
                 @endcan
+                @can('crematorium_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/crematoria*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.crematoria.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
+                            </i>
+                            {{ trans('cruds.crematorium.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('location_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/locations*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.locations.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
+                            </i>
+                            {{ trans('cruds.location.title') }}
+                        </a>
+                    </li>
+                @endcan
                 @can('user_alert_access')
                     <li class="items-center">
                         <a class="{{ request()->is("admin/user-alerts*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.user-alerts.index") }}">

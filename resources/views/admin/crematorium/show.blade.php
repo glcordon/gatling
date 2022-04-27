@@ -6,9 +6,9 @@
             <div class="card-header-container">
                 <h6 class="card-title">
                     {{ trans('global.view') }}
-                    {{ trans('cruds.user.title_singular') }}:
-                    {{ trans('cruds.user.fields.id') }}
-                    {{ $user->id }}
+                    {{ trans('cruds.crematorium.title_singular') }}:
+                    {{ trans('cruds.crematorium.fields.id') }}
+                    {{ $crematorium->id }}
                 </h6>
             </div>
         </div>
@@ -19,68 +19,54 @@
                     <tbody class="bg-white">
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.id') }}
+                                {{ trans('cruds.crematorium.fields.id') }}
                             </th>
                             <td>
-                                {{ $user->id }}
+                                {{ $crematorium->id }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.name') }}
+                                {{ trans('cruds.crematorium.fields.crematorium_name') }}
                             </th>
                             <td>
-                                {{ $user->name }}
+                                {{ $crematorium->crematorium_name }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.email') }}
+                                {{ trans('cruds.crematorium.fields.phone') }}
                             </th>
                             <td>
-                                <a class="link-light-blue" href="mailto:{{ $user->email }}">
-                                    <i class="far fa-envelope fa-fw">
-                                    </i>
-                                    {{ $user->email }}
-                                </a>
+                                {{ $crematorium->phone }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.email_verified_at') }}
+                                {{ trans('cruds.crematorium.fields.representative') }}
                             </th>
                             <td>
-                                {{ $user->email_verified_at }}
+                                {{ $crematorium->representative }}
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.roles') }}
+                                {{ trans('cruds.crematorium.fields.address') }}
                             </th>
                             <td>
-                                @foreach($user->roles as $key => $entry)
-                                    <span class="badge badge-relationship">{{ $entry->title }}</span>
-                                @endforeach
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.user.fields.locale') }}
-                            </th>
-                            <td>
-                                {{ $user->locale }}
+                                {{ $crematorium->address }}
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="form-group">
-                @can('user_edit')
-                    <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-indigo mr-2">
+                @can('crematorium_edit')
+                    <a href="{{ route('admin.crematoria.edit', $crematorium) }}" class="btn btn-indigo mr-2">
                         {{ trans('global.edit') }}
                     </a>
                 @endcan
-                <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
+                <a href="{{ route('admin.crematoria.index') }}" class="btn btn-secondary">
                     {{ trans('global.back') }}
                 </a>
             </div>

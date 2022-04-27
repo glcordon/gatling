@@ -98,6 +98,8 @@ class Create extends Component
                 'nullable',
             ],
             'body.covid' => [
+                'required',
+                'in:' . implode(',', array_keys($this->listsForFields['covid'])),
             ],
             'body.me_case_number' => [
                 'string',
@@ -111,18 +113,17 @@ class Create extends Component
                 'string',
                 'nullable',
             ],
-            
-            'body.num_stairs_outside' => [
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-                //'nullable',
+            'body.stair_inside' => [
+                'boolean',
             ],
-            'body.num_stairs_inside' => [
+            'body.stairs_outside' => [
+                'boolean',
+            ],
+            'body.number_of_stairs' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                //'nullable',
+                'nullable',
             ],
             'body.family_ready_for_removal' => [
                 'nullable',

@@ -8,16 +8,16 @@
                 @endforeach
             </select>
 
-            @can('body_delete')
+            @can('location_delete')
                 <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
                     {{ __('Delete Selected') }}
                 </button>
             @endcan
 
             @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
-                <livewire:excel-export model="Body" format="csv" />
-                <livewire:excel-export model="Body" format="xlsx" />
-                <livewire:excel-export model="Body" format="pdf" />
+                <livewire:excel-export model="Location" format="csv" />
+                <livewire:excel-export model="Location" format="xlsx" />
+                <livewire:excel-export model="Location" format="pdf" />
             @endif
 
 
@@ -41,88 +41,71 @@
                         <th class="w-9">
                         </th>
                         <th class="w-28">
-                            {{ trans('cruds.body.fields.id') }}
+                            {{ trans('cruds.location.fields.id') }}
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.first_name') }}
-                            @include('components.table.sort', ['field' => 'first_name'])
+                            {{ trans('cruds.location.fields.name') }}
+                            @include('components.table.sort', ['field' => 'name'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.last_name') }}
-                            @include('components.table.sort', ['field' => 'last_name'])
+                            {{ trans('cruds.location.fields.phone') }}
+                            @include('components.table.sort', ['field' => 'phone'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.date_of_birth') }}
-                            @include('components.table.sort', ['field' => 'date_of_birth'])
+                            {{ trans('cruds.location.fields.city') }}
+                            @include('components.table.sort', ['field' => 'city'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.death_time_date') }}
-                            @include('components.table.sort', ['field' => 'death_time_date'])
+                            {{ trans('cruds.location.fields.state') }}
+                            @include('components.table.sort', ['field' => 'state'])
                         </th>
                         <th>
-                            {{ trans('cruds.body.fields.covid') }}
-                            @include('components.table.sort', ['field' => 'covid'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.number_of_stairs') }}
-                            @include('components.table.sort', ['field' => 'number_of_stairs'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.body.fields.photo') }}
+                            {{ trans('cruds.location.fields.zip') }}
+                            @include('components.table.sort', ['field' => 'zip'])
                         </th>
                         <th>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($bodies as $body)
+                    @forelse($locations as $location)
                         <tr>
                             <td>
-                                <input type="checkbox" value="{{ $body->id }}" wire:model="selected">
+                                <input type="checkbox" value="{{ $location->id }}" wire:model="selected">
                             </td>
                             <td>
-                                {{ $body->id }}
+                                {{ $location->id }}
                             </td>
                             <td>
-                                {{ $body->first_name }}
+                                {{ $location->name }}
                             </td>
                             <td>
-                                {{ $body->last_name }}
+                                {{ $location->phone }}
                             </td>
                             <td>
-                                {{ $body->date_of_birth }}
+                                {{ $location->city }}
                             </td>
                             <td>
-                                {{ $body->death_time_date }}
+                                {{ $location->state }}
                             </td>
                             <td>
-                                {{ $body->covid_label }}
-                            </td>
-                            <td>
-                                {{ $body->number_of_stairs }}
-                            </td>
-                            <td>
-                                @foreach($body->photo as $key => $entry)
-                                    <a class="link-photo" href="{{ $entry['url'] }}">
-                                        <img src="{{ $entry['thumbnail'] }}" alt="{{ $entry['name'] }}" title="{{ $entry['name'] }}">
-                                    </a>
-                                @endforeach
+                                {{ $location->zip }}
                             </td>
                             <td>
                                 <div class="flex justify-end">
-                                    @can('body_show')
-                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.bodies.show', $body) }}">
+                                    @can('location_show')
+                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.locations.show', $location) }}">
                                             {{ trans('global.view') }}
                                         </a>
                                     @endcan
-                                    @can('body_edit')
-                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.bodies.edit', $body) }}">
+                                    @can('location_edit')
+                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.locations.edit', $location) }}">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
-                                    @can('body_delete')
-                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $body->id }})" wire:loading.attr="disabled">
+                                    @can('location_delete')
+                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $location->id }})" wire:loading.attr="disabled">
                                             {{ trans('global.delete') }}
                                         </button>
                                     @endcan
@@ -149,7 +132,7 @@
                     {{ __('Entries selected') }}
                 </p>
             @endif
-            {{ $bodies->links() }}
+            {{ $locations->links() }}
         </div>
     </div>
 </div>

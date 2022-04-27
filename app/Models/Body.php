@@ -57,8 +57,7 @@ class Body extends Model implements HasMedia
         'date_of_birth',
         'death_time_date',
         'covid',
-        'num_stairs_outside',
-        'num_stairs_inside',
+        'number_of_stairs',
     ];
 
     public $filterable = [
@@ -68,8 +67,7 @@ class Body extends Model implements HasMedia
         'date_of_birth',
         'death_time_date',
         'covid',
-        'num_stairs_inside',
-        'num_stairs_outside',
+        'number_of_stairs',
     ];
 
     public static $search = [
@@ -79,7 +77,6 @@ class Body extends Model implements HasMedia
         'doctors_name',
         'at_need_service_id_number',
         'next_of_kin_email',
-        'num_stairs_outside',
     ];
 
     protected $appends = [
@@ -114,8 +111,8 @@ class Body extends Model implements HasMedia
         'me_case_number',
         'house_removal',
         'rd_number',
-        'num_stairs_outside',
-        'num_stairs_inside',
+        'stair_inside',
+        'stairs_outside',
         'number_of_stairs',
         'family_ready_for_removal',
         'doctors_name',
